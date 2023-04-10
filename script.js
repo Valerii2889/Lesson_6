@@ -1,433 +1,457 @@
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze
+// const arr = [1, 2, 3];
+// const [, _, third] = arr;
+
+// console.log(_);
+// console.log(third);
 
 
 // const user = {
-//     name: 'Artem',
-//     age: 28,
-//     languages: {
-//         html: false,
-//         css: false,
-//         js: true,
-//         "React Native": false
+//     name: 'Test',
+//     age: 11,
+//     skills: {
+//         html: true,
+//         css: true,
+//         js: false
 //     }
-// }
+// };
+// const name = 'value';
+// const userName = 'Some name'
+// const {age: userAge , name : nameUser} = user;
 
-// console.log(user.languages.React_Native);
-// console.log(user['languages']["React Native"]);
+// console.log('age',userAge);
+// console.log(name);
+// console.log(userName);
+// console.log(nameUser);
+// const age = user.age;
+// const html = user.skills.html;
 
-// for (const key in user){
-// console.log(user.key);
-//     console.log(key);
-//     console.log(user[key]);
-//     // console.log(user[key]);
-// }
-// const test = 3;
-// const test2 = 45;
-// const value = 'start'
-// const value2 = 'End'
+
 // const user = {
-//     name: 'Artem',
-//     age: 28,
-//     languages: {
-//         html: false,
-//         css: false,
-//         js: true,
-//         "React Native": false
+//     name: 'Test',
+//     age: 11,
+//     skills: {
+//         html: true,
+//         css: true,
+//         js: false,
+//         cars: {
+//             audi: 'A6',
+//             bmw: 'x5'
+//         }
 //     },
-//     // [value + value2] : 'some value',
-//     result : test + test2,
-
+//     languages : [{html : true}, {css: false}]
 // };
-// console.log(user.result);
 
-// user.age = 29;
-// user.age += 1
-
-// user.city = 'VN';
-// console.log(user);
-// // console.log(user.age);
-
-
-// delete user.city
-// console.log(user);
+// const {languages : [skillHtml, css]} = user
+// const {html} = skillHtml
+// console.log(html);
+// console.log(css);
 
 
 
-
-// const user = {
-//     name: 'Artem',
-//     age: 28,
-//     languages: {
-//         html: false,
-//         css: false,
-//         js: true,
-//         "React Native": false
+// const skills = 123
+// const {
+//     name,
+//     skills: {
+//         js,
+//         css : sass,
+//         cars: {
+//             audi
+//         }
 //     }
-// };
+// } = user;
 
-
-// Object.freeze(user);
-// user.asdfwesgfasdfasz = 'dasdgvsdfdafsed';
-// user.age = 100;
-// console.log(user);
-
-
-
+// console.log(sass);
 
 
 // const user = {
-//     name: 'Artem',
-//     age: 28,
-//     languages: {
-//         html: false,
-//         css: false,
-//         js: true,
-//         "React Native": false
+//     name: 'Test',
+//     age: 11,
+//     skills: {
+//         html: true,
+//         css: true,
+//         js: false,
+//         cars: {
+//             audi: 'A6',
+//             bmw: 'x5'
+//         }
+//     },
+//     languages: [{
+//         html: true
+//     }, {
+//         css: false
+//     }]
+// };
+// for(const {html} of user.languages){
+//     console.log(html);
+// }
+
+
+
+// const users = [{
+//     name: 'User1',
+//     language: 'html',
+//     car: {
+//         audi: 'A6',
+//         bmw: 'X5'
 //     }
-// };
-// // Object.freeze(user);
+// }, {
+//     name: 'User2',
+//     language: 'css',
+//     car: {
+//         audi: 'A8',
+//         bmw: 'X6'
+//     }
+// }, {
+//     name: 'User3',
+//     language: 'js',
+//     car: {
+//         audi: 'A7'
+//     }
+// }]
+// а чому на кар нема конфлікту?
 
-// const user2 = Object.create(user);
-// user2.age = 33
-// console.log(user2);
-// console.log(user);
+
+
+// for(const {name, car : {audi : car}} of users){
+//     console.log(car);
+// }
+// for (const {
+//         name,
+//         cars: {
+//             audi = "None",
+//             bmw = 'None'
+//         }
+//     } of users) {
+//     console.log(audi, bmw);
+// }
+
+
+
+// function foo({name = "No name", car: {bmw = 'None'} = {}} = {}) {
+//     console.log(name,bmw);
+//     ///
+// }
+// foo({
+//     name: 'User1',
+//     language: 'html',
+//     car: {
+//         audi: 'A6',
+//         bmw: 'X5'
+//     }
+
+// })
+// foo({
+//     name: 'User2',
+//     language: 'html',
+// })
+// foo()
+
+
+// const arr1 = [12, 22, 3, 14, 45, 16, 57];
+// // // spread
+// // const min = Math.min(...arr1)
+// // console.log(min);
+// //    12, 22, 3, 14, 45, 16, 57
+// const arr2 = [...arr1];
+// // arr2.splice(0, 1)
+// console.log(arr1 === arr2);
+
+// // // rest
+// const [first, second, ...props] = arr1;
+// console.log('props', props);
+// console.log(first);
+// // for(let prop of props){
+// //     prop *= first
+// // }
+// for (let i = 0; i < props.length; i += 1) {
+//     props[i] *= first
+// }
+// console.log(props);
+
+
+
+// function foo(first, second, ...args) {
+//     console.log(args);
+// }
+
+// foo(1, 2, 3, 4, 5, 6)
+// const arr1 = [12, 22, 3, 14, 45, 16, 57];
+
+// function foo(first, second, ...rest) {
+//     console.log(arguments);
+//     console.log(first, second,rest);
+// }
+// foo(...arr1)
 
 
 
 
-// for (const key in user2) {
-//     if (user2.hasOwnProperty(key)) {
-//         console.log('Own', user2[key]);
-//     } else {
-//         console.log('All', user2[key]);
+
+
+// Example 1 - Деструктуризація
+// Перепиши функцію так, щоб вона приймала один об'єкт параметрів замість набору незалежних аргументів.
+
+
+// JS Doc /** */
+/**
+ * Розраховуємо індекс маси тіла людини
+ * @param {Object} obj
+ * @returns {Number} BMI
+ */
+// function calcBMI({
+//     weight,
+//     height
+// }) {
+//     const numericWeight = Number(weight.replace(',', '.'));
+//     const numericHeight = Number(height.replace(',', '.'));
+//     return Number((numericWeight / numericHeight ** 2).toFixed(1));
+// }
+
+// // // Було
+// // console.log(calcBMI('88,3', '1.75'));
+// console.log(calcBMI({
+//     weight: '88,3',
+//     height: '1.75'
+// }));
+// console.log(calcBMI({
+//     weight: '68,3',
+//     height: '1.65'
+// }));
+// console.log(calcBMI({
+//     weight: '118,3',
+//     height: '1.95'
+// }));
+
+
+// Example 2 - Деструктуризація
+// Перепиши функцію так, щоб вона приймала один об'єкт параметрів замість набору незалежних аргументів.
+
+
+// /**
+//  * 
+//  * @param {Object} obj 
+//  */
+// function printContactsInfo({names, phones}) {
+//     const nameList = names.split(',');
+//     const phoneList = phones.split(',');
+//     for (let i = 0; i < nameList.length; i += 1) {
+//         console.log(`${nameList[i]}: ${phoneList[i]}`);
 //     }
 // }
 
-// console.log('All', user2[key]);
-// const user = {
-//     score: false
+
+// printContactsInfo({
+//     names: 'Jacob,William,Solomon,Artemis',
+//     phones: '89001234567,89001112233,890055566377,890055566300'
+// }, );
+
+
+// Example 3 - Глибока деструктуризація
+// Перепиши функцію так, щоб вона приймала один об'єкт параметрів замість набору незалежних аргументів.
+
+// function getBotReport({
+//     companyName,
+//     repairBots,
+//     defenceBots
+// }) {
+//     return `${companyName} has ${repairBots + defenceBots} bots in stock`;
 // }
 
-// if (user.hasOwnProperty('score')) {
-//     console.log('yes');
-// } else {
-//     console.log('no');
+// // Було
+// console.log(getBotReport({
+//     companyName: 'Cyberdyne Systems',
+//     repairBots: 150,
+//     defenceBots: 50
+// }));
+
+
+// Example 4 - Деструктуризація
+// Перепиши функцію так, щоб вона приймала об'єкт параметрів із властивостями companyName та stock та виводила репорт про кількість товарів на складі будь-якої компанії.
+
+
+// function getStockReport({companyName, stock}) {
+//     // let total = repairBots + defenceBots;
+//     let total = 0
+//     for (const value of Object.values(stock)) {
+//         total += value;
+//     }
+//     return `${companyName} has ${total} items in stock`;
 // }
 
-// if ('score' in user) {
-//     console.log('yes');
-// } else {
-//     console.log('no');
+// console.log(
+//     getStockReport({
+//         companyName: 'Cyberdyne Systems',
+//         stock: {
+//             repairBots: 150,
+//             defenceBots: 50,
+//         }
+//     }),
+// ); // "Cyberdyne Systems has 200 items in stock"
+
+// console.log(
+//     getStockReport({
+//         companyName: 'Belacci',
+//         stock: {
+//             shoes: 20,
+//             skirts: 10,
+//             hats: 5,
+//         }
+//     })); // "Belacci has 35 item in stock"
+// Example 5 - Операція spread
+// Доповни функцію createContact(partialContact) так, щоб вона повертала новий об'єкт контакту з доданими властивостями id та createdAt, а також list зі значенням "default" якщо в partialContact немає такої властивості.
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+// function createContact(partialContact) {
+//     return {
+//         id: generateId(),
+//         createdAt: new Date(),
+//         list :"default",
+//         ...partialContact,
+//     }
 // }
 
+// console.log(
+//     createContact({
+//         name: 'Mango',
+//         email: 'mango@mail.com',
+//         list: 'friends',
+//     }),
+// );
+// console.log(
+//     createContact({
+//         name: 'Poly',
+//         email: 'poly@hotmail.com',
+//     }),
+// );
 
-// if (user.score) {
-//     console.log('yes');
-// } else {
-//     console.log('no');
+// function generateId() {
+//   return '_' + Math.random().toString(36).substr(2, 9);
 // }
 
+// Example 6 - Операція rest
+// Напиши функцію transformUsername(user) так, щоб вона повертала новий об'єкт із властивістю De, замість firstName та lastName.
 
-const user = {
-    name: 'Artem',
-    age: 28,
-    languages: {
-        html: false,
-        css: false,
-        js: true,
-        ReactNative: false,
-    },
-    sayHello() {
-        console.log(`My name ${this.name}`);
-    },
-    iKnow() {
-        // const keys = Object.keys(this.languages);
-        // const values = Object.values(this.languages);
-        // const entries = Object.entries(this.languages);
-        const keys = Object.keys(this);
-        for(const key of keys){
-            if(typeof this[key] === 'function'){
-                continue;
-            }else{
-                console.log(key);
-            }
-        }
-        console.log(keys);
-        // console.log(values);
-        // console.log(entries);
-        // for (const key of keys) {
-        //     console.log(key);
-        //     if (this.languages[key]) {
-        //         // console.log(key);
-        //     }
-        // }
-        // console.log(keys);
-        // for(const key in this.languages){
-        //     if(this.languages[key])
-        //     console.log(key);
-        // }
-    }
-}
-user.iKnow()
-// const user2 = Object.create(user);
-// user2.name = 'Den';
-// console.log(user2);
-// user2.sayHello()
-// user.sayHello()
+// function transformUsername({firstName, lastName, ...props}) {
+// return {
+//     fullName: `${firstName} ${lastName}`,
+//     ...props
+// }
+// }
+
+// console.log(
+//     transformUsername({
+//         id: 1,
+//         firstName: 'Jacob',
+//         lastName: 'Mercer',
+//         email: 'j.mercer@mail.com',
+//         friendCount: 40,
+//     }),
+// );
+// // {
+// //     id: 1,
+// //     fullName: 'Jacob Mercer',
+// //     email: 'j.mercer@mail.com',
+// //     friendCount: 40,
+// // }
+// console.log(
+//     transformUsername({
+//         id: 2,
+//         firstName: 'Adrian',
+//         lastName: 'Cross',
+//         email: 'a.cross@hotmail.com',
+//         friendCount: 20,
+//     }),
+// );
+
+// const products = [{
+//     name: 'apple',
+//     qty: 4,
+//     key : "Test"
+// }]
+
+// function getAllPropValues(propName) {
+//     // Change code below this line
+//     let valuesPropName = [];
+
+//     for (const product of products) {
+//         for (const key in product) {
+//             // console.log(key);
+//             if (key === propName) {      //name
+//                 console.log(product[key]);
+//                 console.log(product.key);
+//                 valuesPropName.push();
+//                 valuesPropName.push();
+//             }
+//         }
+//     }
+//     return valuesPropName;
+// }
+// getAllPropValues('name')
 
 
 
-
-
-
-
-// Example 1 - Основи об 'єктів
-// Напиши скрипт, який для об'єкта user, послідовно:
-
-// додає поле mood зі значенням 'happy'
-// замінює значення hobby на 'skydiving'
-// замінює значення premium на false
-// виводить вміст об 'єкта user у форматі ключ:значення використовуючи Object.keys() та for...of
-
-// const user = {
-//     name: 'Mango',
-//     age: 20,
-//     hobby: 'html',
-//     premium: true,
+// const firstBook = {
+//     title: "The Last Kingdom",
+//     coverImage: "https://images-na.ssl-images-amazon.com/images/I/51b5YG6Y1rL.jpg",
 // };
 
-// user.skills = {
-//     run: true
-// }
+// const {
+//     title: firstTitle,
+//     coverImage: firstCoverImage = "https://via.placeholder.com/640/480",
+// } = firstBook;
 
-// user.mood = 'happy';
-// user.hobby = 'skydiving';
-// // user['premium'] = false;
-// const key = 'premium';
-// user[key] = false;
-// console.log(user);
-// for (const key in user) {
-//     console.log(user[key]);
-// }
-// const keys = Object.keys(user);
-// for(const key of keys){
-//     console.log(user[key]);
-// }
-// console.log(keys);
-
-
-// Example 2 - метод Object.values()
-// У нас є об'єкт, де зберігаються зарплати нашої команди. Напишіть код для підсумовування всіх зарплат і збережіть результат у змінній sum. Повинно вийти 390. Якщо об'єкт salaries порожній, то результат має бути 0.
-
-// const salaries = {
-//     John: 100,
-//     Ann: 160,
-//     Pete: 130,
+// const secondBook = {
+//     title: "Сон смішної людини",
+//     coverImage: "https://via.placeholder.com/640/480",
 // };
 
-// let sum = 0;
-// const values = Object.values(salaries);
-// console.log(values);
-// for(const value of values){
-//     sum += value
-//     // console.log(value);
-// }
-// console.log(sum);
-// for (const key in salaries) {
-//     console.log(key);
-//     sum += salaries[key]
-//     console.log(salaries[key]);
-// }
-// console.log(sum);
+// const {
+//     title: secondTitle,
+//     coverImage: secondCoverImage = "https://via.placeholder.com/640/480",
+// } = secondBook;
+
+// console.log(secondTitle); // Сон смішної людини
+// console.log(secondCoverImage); // https://via.placeholder.com/640/480
 
 
-
-
-
-// Example 3 - Масив об 'єктів
-// Напишіть функцію calcTotalPrice(stones, stoneName), яка приймає масив об 'єктів та рядок з назвою каменю. Функція рахує і повертає загальну вартість каміння з таким ім'ям, ціною та кількістю з об'єкта
-
-
-// const stones = [{
-//         name: 'Смарагд',
+// const products = [{
+//         name: 'Radar',
 //         price: 1300,
 //         quantity: 4
 //     },
 //     {
-//         name: 'Діамант',
+//         name: 'Scanner',
 //         price: 2700,
 //         quantity: 3
 //     },
 //     {
-//         name: 'Сапфір',
+//         name: 'Droid',
 //         price: 400,
 //         quantity: 7
 //     },
 //     {
-//         name: 'Щебінь',
-//         price: 200,
-//         quantity: 2
+//         name: 'Grip',
+//         price: 1200,
+//         quantity: 9
 //     },
 // ];
 
-// function calcTotalPrice(stones, stoneName) {
 
-//     for (const stone of stones) {
-//         // if (stone.name === stoneName) {
-//         //     result = stone.price * stone.quantity;
-//         //     break;
-//         // }
-//         if (stone.name === stoneName) {
-//             return stone.price * stone.quantity;
-//         }
-//         console.log(stone.name);
+// function getAllPropValues(propName) {
+//     const newArr = [];
+
+//     for (const product of products) {
+//         propName in product ? newArr.push(product[propName]) : null;
+
 //     }
-//     return 'Empty';
-//     // return result;
+//     return newArr;
 // }
-// console.log(calcTotalPrice(stones, 'asdas'));
-
-// Example 4 - Комплексні завдання
-// Напиши скрипт управління особистим кабінетом інтернет банку. Є об'єкт account в якому необхідно реалізувати методи для роботи з балансом та історією транзакцій.
-
-// /*
-//  * Типів транзакцій всього два.
-//  * Можна покласти чи зняти гроші з рахунку.
-//  */
-// const Transaction = {
-//     DEPOSIT: 'deposit',
-//     WITHDRAW: 'withdraw',
-// };
-// Object.freeze(Transaction)
-// // Transaction.DEPOSIT = 'asdnasjkdnjasdjn'
-// // console.log(Transaction);
-// // /*
-// //  * Кожна транзакція це об'єкт із властивостями: id, type та amount
-// //  */
-
-// const account = {
-//     // Поточний баланс рахунку
-//     balance: 0,
-
-//     // Історія транзакцій
-//     transactions: [{
-//         id: 16,
-//         amount: 145,
-//         type: 'deposit'
-//     }, ],
-
-//     /*
-//      * Метод створює та повертає об'єкт транзакції.
-//      * Приймає суму та тип транзакції.
-//      */
-//     createTransaction(amount, type) {
-//         return {
-//             id: Date.now(),
-//             amount,
-//             type
-//         }
-//     },
-
-//     /*
-//      * Метод, що відповідає за додавання суми до балансу.
-//      * Приймає суму транзакції.
-//      * Викликає createTransaction для створення об'єкта транзакції
-//      * після чого додає його до історії транзакцій
-//      */
-//     deposit(amount) {
-//         if (amount <= 0) {
-//             return 'Error'
-//         }
-//         const item = this.createTransaction(amount, Transaction.DEPOSIT)
-//         this.balance += amount
-//         this.transactions.push(item)
-//     },
-
-//     /*
-//      * Метод, що відповідає за зняття суми з балансу.
-//      * Приймає суму транзакції.
-//      * Викликає createTransaction для створення об'єкта транзакції
-//      * після чого додає його до історії транзакцій.
-//      *
-//      * Якщо amount більше ніж поточний баланс, виводь повідомлення
-//      * про те, що зняття такої суми не можливе, недостатньо коштів.
-//      */
-//     withdraw(amount) {
-//         if (amount > this.balance || amount <= 0) {
-//             return 'недостатньо коштів';
-//         }
-//         const item = this.createTransaction(amount, Transaction.WITHDRAW)
-//         this.transactions.push(item);
-//         this.balance -= amount;
-
-//     },
-
-//     /*
-//      * Метод повертає поточний баланс
-//      */
-//     getBalance() {
-//         return this.balance
-//     },
-
-//     /*
-//      * Метод шукає та повертає об'єкт транзакції по id
-//      */
-//     getTransactionDetails(id) {
-//         for (const transaction of this.transactions) {
-//             if (transaction.id === id) {
-//                 return transaction
-//             }
-//         }
-//         return 'Empty';
-//     },
-
-//     /*
-//      * Метод повертає кількість коштів
-//      * певного типу транзакції з усієї історії транзакцій
-//      */
-//     getTransactionTotal(type) {
-//         let sum = 0;
-//         for (const transaction of this.transactions) {
-//             if (transaction.type === type) {
-//                 sum += transaction.amount
-//             }
-//         }
-
-//         return sum;
-//     },
-// };
-// account.deposit(1);
-// account.deposit(1231);
-// account.deposit(1431);
-// account.withdraw(123);
-// console.log(account.getTransactionTotal(Transaction.WITHDRAW));
-// console.log(account);
-// // Перерва до 21:15
+// console.log(getAllPropValues('price'));
 
 
-// const arr = ['a', 'b', 'c']
-// const idx = arr.indexOf('asdas');
-
-// function foo() {
-//     if (idx === -1) {
-//         console.log("немає");
-//         return;
-//     }
-//     arr.splice(idx, 1)
-// }
-// foo()
-
-// console.log(idx);
-// console.log(arr);
-
-
-// function countup(n) {
-//     if (n < 1) {
-//       return [];
-//     } else {
-//   const countArray = countup(n - 1);
-//       countArray.push(n);
-//       return countArray;
-//     }
-//   }
-//   console.log(countup(5));
+// console.log(typeof name);
+// const subStr = 1234;
+// console.log(subStr);
+// console.log(subStr);
+let test;
+console.log(test);
